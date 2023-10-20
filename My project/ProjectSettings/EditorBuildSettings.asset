@@ -8,5 +8,11 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
+  - enabled: 1
+    path: Assets/sequence/level/UI_StartMenu.unity
+    guid: b611a3457026e71408b45ebc7e17c7f7
+  - enabled: 1
+    path: Assets/sequence/level/LVL_Stage1.unity
+    guid: a1f3831bb2387f347a6ac6f4e777e507
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: fb8b526d72576c543b25b29c653bec4c, type: 2}
