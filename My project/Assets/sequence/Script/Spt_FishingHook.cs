@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Spt_FishingHook : MonoBehaviour
 {
+
     public float ascendingSpeed;
     public float descendingSpeed;
     public float maxDistance;
@@ -16,7 +17,7 @@ public class Spt_FishingHook : MonoBehaviour
     private Vector3 startPosition;
     private bool isAscending = true;
 
-    void Start()
+    public void Start()
     {
         startPosition = transform.position;
     }
