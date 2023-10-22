@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spt_FishingHook : MonoBehaviour
+public class FishingHook : MonoBehaviour
 {
-
     public float ascendingSpeed;
     public float descendingSpeed;
-    public float maxDistance;
+    public float maxDistance = 10f;
     public float speed = 5f;
     public float leftBound = -10f;
     public float rightBound = 10f;
@@ -17,7 +16,12 @@ public class Spt_FishingHook : MonoBehaviour
     private Vector3 startPosition;
     private bool isAscending = true;
 
-    public void Start()
+    public void depthupdate()
+    {
+        maxDistance = maxDistance + 10;
+        Debug.Log("updated");
+    }
+    void Start()
     {
         startPosition = transform.position;
     }

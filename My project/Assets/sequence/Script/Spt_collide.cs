@@ -7,6 +7,7 @@ public class Spt_collide : MonoBehaviour
     private bool isAttached = false;
     private Transform hookTransform; // Reference to the hook's transform
 
+
     private void Start()
     {
         hookTransform = null; // Initialize the reference to null
