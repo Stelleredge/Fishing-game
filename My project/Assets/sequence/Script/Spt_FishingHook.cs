@@ -12,15 +12,18 @@ public class FishingHook : MonoBehaviour
     public float rightBound = 10f;
 
     private bool movingRight = true;
-
-    private Vector3 startPosition;
     private bool isAscending = true;
+    private Vector3 startPosition;
+
+    // Add a flag to check if the screen is touched
+    private bool screenTouched = false;
 
     public void depthupdate()
     {
         maxDistance = maxDistance + 10;
         Debug.Log("updated");
     }
+
     void Start()
     {
         startPosition = transform.position;
@@ -28,46 +31,63 @@ public class FishingHook : MonoBehaviour
 
     void Update()
     {
-        float mouseX = Input.mousePosition.x;
-        float screenWidth = Screen.width;
-        float positionX = (mouseX / screenWidth) * (rightBound - leftBound) + leftBound;
-
-        transform.position = new Vector3(positionX, transform.position.y, transform.position.z);
-
-        if (movingRight)
+        if (Input.GetMouseButtonDown(0)) // Check for screen touch or mouse click
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(speed, 0);
+            screenTouched = true;
         }
-        else
+        else if (Input.GetMouseButtonUp(0))
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, 0);
+            screenTouched = false;
         }
 
-        if (transform.position.x >= rightBound)
+        // Move the GameObject only when the screen is touched
+        if (screenTouched)
         {
-            movingRight = false;
-        }
-        else if (transform.position.x <= leftBound)
-        {
-            movingRight = true;
-        }
+            float mouseX = Input.mousePosition.x;
+            float screenWidth = Screen.width;
+            float positionX = (mouseX / screenWidth) * (rightBound - leftBound) + leftBound;
 
+            transform.position = new Vector3(positionX, transform.position.y, transform.position.z);
 
-        if (isAscending)
-        {
-            transform.Translate(Vector3.down * ascendingSpeed * Time.deltaTime);
-            if (transform.position.y <= startPosition.y - maxDistance)
+            if (movingRight)
             {
-                isAscending = false;
+                GetComponent<Rigidbody2D>().velocity = new Vector2(speed, 0);
+            }
+            else
+            {
+                GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, 0);
+            }
+
+            if (transform.position.x >= rightBound)
+            {
+                movingRight = false;
+            }
+            else if (transform.position.x <= leftBound)
+            {
+                movingRight = true;
+            }
+
+            if (isAscending)
+            {
+                transform.Translate(Vector3.down * ascendingSpeed * Time.deltaTime);
+                if (transform.position.y <= startPosition.y - maxDistance)
+                {
+                    isAscending = false;
+                }
+            }
+            else
+            {
+                transform.Translate(Vector3.up * descendingSpeed * Time.deltaTime);
+                if (transform.position.y >= startPosition.y)
+                {
+                    isAscending = true;
+                }
             }
         }
         else
         {
-            transform.Translate(Vector3.up * descendingSpeed * Time.deltaTime);
-            if (transform.position.y >= startPosition.y)
-            {
-                isAscending = true;
-            }
+            // If the screen is not touched, stop the GameObject
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
     }
 }

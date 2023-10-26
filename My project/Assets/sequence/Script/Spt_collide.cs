@@ -7,6 +7,7 @@ public class Spt_collide : MonoBehaviour
     private bool isAttached = false;
     private Transform hookTransform; // Reference to the hook's transform
 
+    public int value;
 
     private void Start()
     {
@@ -22,6 +23,8 @@ public class Spt_collide : MonoBehaviour
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             rb.isKinematic = true; // Make the fish kinematic to prevent physics interactions
             AttachToHookCenter();
+
+            Counter.instance.IncreaseCoins(value);
         }
     }
 
