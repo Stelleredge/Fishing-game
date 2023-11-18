@@ -15,14 +15,9 @@ public class FishingHook : MonoBehaviour
     private bool isAscending = true;
     private Vector3 startPosition;
 
-    // Add a flag to check if the screen is touched
     private bool screenTouched = false;
 
-    public void depthupdate()
-    {
-        maxDistance = maxDistance + 10;
-        Debug.Log("updated");
-    }
+    private string fishType = ""; // Store the fish type
 
     void Start()
     {
@@ -31,7 +26,7 @@ public class FishingHook : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // Check for screen touch or mouse click
+        if (Input.GetMouseButtonDown(0))
         {
             screenTouched = true;
         }
@@ -40,7 +35,6 @@ public class FishingHook : MonoBehaviour
             screenTouched = false;
         }
 
-        // Move the GameObject only when the screen is touched
         if (screenTouched)
         {
             float mouseX = Input.mousePosition.x;
@@ -86,8 +80,8 @@ public class FishingHook : MonoBehaviour
         }
         else
         {
-            // If the screen is not touched, stop the GameObject
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
     }
 }
+

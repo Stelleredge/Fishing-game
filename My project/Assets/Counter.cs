@@ -6,8 +6,8 @@ using TMPro;
 public class Counter : MonoBehaviour
 {
     public static Counter instance;
-    public TMP_Text coinText;
-    public int currentCoins = 0;
+    public TMP_Text countText;
+    public int currentCount = 0;
     void Awake()
     {
         instance = this;
@@ -15,11 +15,11 @@ public class Counter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        coinText.text = "COINS: " + currentCoins.ToString();
+        countText.text = "Count: " + currentCount.ToString();
     }
-    public void IncreaseCoins (int v)
+    public void IncreaseCount (int v)
     {
-        currentCoins += v;
-        coinText.text = "COINS: " + currentCoins.ToString();
+        currentCount += v;
+        countText.text = "Count: " + currentCount.ToString();
     }
 }

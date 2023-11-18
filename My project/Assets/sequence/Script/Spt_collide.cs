@@ -24,7 +24,7 @@ public class Spt_collide : MonoBehaviour
             rb.isKinematic = true; // Make the fish kinematic to prevent physics interactions
             AttachToHookCenter();
 
-            Counter.instance.IncreaseCoins(value);
+            Counter.instance.IncreaseCount(value);
         }
     }
 
