@@ -7,7 +7,8 @@ public class Spt_collide : MonoBehaviour
     private bool isAttached = false;
     private Transform hookTransform; // Reference to the hook's transform
 
-    public int value;
+    public int Count;
+    public int coinValue=10;
 
     private void Start()
     {
@@ -24,7 +25,8 @@ public class Spt_collide : MonoBehaviour
             rb.isKinematic = true; // Make the fish kinematic to prevent physics interactions
             AttachToHookCenter();
 
-            Counter.instance.IncreaseCount(value);
+            Counter.instance.IncreaseCount(Count);
+            Counter.instance.IncreaseCoins(coinValue);
         }
     }
 
