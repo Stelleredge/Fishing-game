@@ -15,4 +15,5 @@ EditorBuildSettings:
     path: Assets/sequence/level/LVL_Stage1.unity
     guid: a1f3831bb2387f347a6ac6f4e777e507
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 37dbb4f71317b894db29c3e28a1d3682, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: fb8b526d72576c543b25b29c653bec4c, type: 2}

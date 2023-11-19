@@ -26,17 +26,6 @@ public class FishingHook : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            screenTouched = true;
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            screenTouched = false;
-        }
-
-        if (screenTouched)
-        {
             float mouseX = Input.mousePosition.x;
             float screenWidth = Screen.width;
             float positionX = (mouseX / screenWidth) * (rightBound - leftBound) + leftBound;
@@ -77,11 +66,6 @@ public class FishingHook : MonoBehaviour
                     isAscending = true;
                 }
             }
-        }
-        else
-        {
-            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        }
     }
 }
 
