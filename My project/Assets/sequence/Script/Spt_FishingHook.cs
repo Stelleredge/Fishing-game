@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,10 +16,13 @@ public class FishingHook : MonoBehaviour
     private bool isAscending = true;
     private Vector3 startPosition;
 
+    bool hasCompletedCycle = false;
+
+
+
     private bool screenTouched = false;
 
     private string fishType = ""; // Store the fish type
-
     void Start()
     {
         startPosition = transform.position;
@@ -26,6 +30,8 @@ public class FishingHook : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.instance.isgamestart == true)
+        {
             float mouseX = Input.mousePosition.x;
             float screenWidth = Screen.width;
             float positionX = (mouseX / screenWidth) * (rightBound - leftBound) + leftBound;
@@ -66,6 +72,28 @@ public class FishingHook : MonoBehaviour
                     isAscending = true;
                 }
             }
+            if (isAscending)
+            {
+                transform.Translate(Vector3.down * ascendingSpeed * Time.deltaTime);
+                if (transform.position.y <= startPosition.y - maxDistance)
+                {
+                    isAscending = false;
+                }
+            }
+            else
+            {
+                transform.Translate(Vector3.up * descendingSpeed * Time.deltaTime);
+                if (transform.position.y >= startPosition.y && !hasCompletedCycle)
+                {
+                    isAscending = true;
+                    hasCompletedCycle = true; // Set the flag to true after completing one cycle
+                }
+            }
+        }
+    }
+    public void depthupdate()
+    {
+        maxDistance = maxDistance + 5;
     }
 }
 
