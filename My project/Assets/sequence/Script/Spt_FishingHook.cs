@@ -16,9 +16,7 @@ public class FishingHook : MonoBehaviour
     private bool isAscending = true;
     private Vector3 startPosition;
 
-    bool hasCompletedCycle = false;
-
-
+    public GameObject boat;
 
     private bool screenTouched = false;
 
@@ -83,10 +81,11 @@ public class FishingHook : MonoBehaviour
             else
             {
                 transform.Translate(Vector3.up * descendingSpeed * Time.deltaTime);
-                if (transform.position.y >= startPosition.y && !hasCompletedCycle)
+                if (transform.position.y >= boat.transform.position.y)
                 {
                     isAscending = true;
-                    hasCompletedCycle = true; // Set the flag to true after completing one cycle
+                    GameManager.instance.StopGame();
+                    Debug.Log("game pased1");
                 }
             }
         }

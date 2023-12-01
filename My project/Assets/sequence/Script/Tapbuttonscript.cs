@@ -1,8 +1,15 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine;
 
 public class Tapbuttonscript : Button
 {
+    public static Tapbuttonscript instance;
+
+    protected override void Awake()
+    {
+        instance = this;
+    }
     public override void OnPointerDown(PointerEventData eventData)
     {
         base.OnPointerDown(eventData);
@@ -12,5 +19,10 @@ public class Tapbuttonscript : Button
 
         ///diactivate the start panel
         gameObject.SetActive(false);
+    }
+    public void ShowMenu()
+    {
+        gameObject.SetActive(true);
+        Debug.Log("passed4");
     }
 }

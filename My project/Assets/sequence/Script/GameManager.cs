@@ -20,7 +20,14 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     public void StartGame()
     {
+        Time.timeScale = 1;
         isgamestart = true;
         ingame.SetActive(true);
+    }
+    public void StopGame()
+    {
+        Time.timeScale = 0;
+        Tapbuttonscript.instance.ShowMenu();
+        Debug.Log("game pased2");
     }
 }
