@@ -10,6 +10,7 @@ public class CameraFollow : MonoBehaviour
         if (hook != null)
         {
             Vector3 newPosition = hook.transform.position;
+            newPosition.x = transform.position.x;
             newPosition.z = -10; // Set the z position of the camera
             transform.position = newPosition;
         }
